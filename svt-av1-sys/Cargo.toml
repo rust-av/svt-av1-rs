@@ -1,0 +1,21 @@
+[package]
+name = "svt-av1-sys"
+version = "0.1.0"
+authors = ["Luca Barbato <lu_zero@gentoo.org>"]
+license = "MIT"
+description = "FFI bindings to aom"
+repository = "https://github.com/rust-av/svt-av1-rs"
+edition = "2018"
+build = "build.rs"
+
+[package.metadata.pkg-config]
+SvtAv1Enc = "0.8"
+
+[features]
+build_sources = []
+
+[build-dependencies]
+bindgen = "0.53.1"
+metadeps = "1.1.2"
+
+[dependencies]

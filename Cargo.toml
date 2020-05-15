@@ -3,7 +3,10 @@ name = "svt-av1-rs"
 version = "0.1.0"
 authors = ["Luca Barbato <lu_zero@gentoo.org>"]
 edition = "2018"
-
+readme = "README.md"
+license = "MIT"
+repository = "https://github.com/rust-av/svt-av1-rs"
+description = "High level bindings to SVT-AV1"
 
 [workspace]
 members = ["svt-av1-sys"]

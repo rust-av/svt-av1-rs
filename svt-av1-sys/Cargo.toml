@@ -1,9 +1,9 @@
 [package]
 name = "svt-av1-sys"
-version = "0.1.0"
+version = "0.1.1"
 authors = ["Luca Barbato <lu_zero@gentoo.org>"]
 license = "MIT"
-description = "FFI bindings to aom"
+description = "FFI bindings to SVT-AV1"
 repository = "https://github.com/rust-av/svt-av1-rs"
 edition = "2018"
 build = "build.rs"

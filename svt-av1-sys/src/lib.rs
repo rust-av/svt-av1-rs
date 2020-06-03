@@ -14,8 +14,28 @@ pub use enc::*;
 
 #[cfg(test)]
 mod tests {
+    use super::*;
+    use std::mem;
+    use std::ptr;
     #[test]
-    fn it_works() {
-        assert_eq!(2 + 2, 4);
+    fn encoder_setup() {
+        unsafe {
+            let mut handle: *mut EbComponentType = ptr::null_mut();
+            let mut cfg = mem::MaybeUninit::zeroed();
+
+            let ret = svt_av1_enc_init_handle(&mut handle, ptr::null_mut(), cfg.as_mut_ptr());
+            assert_eq!(ret, 0);
+
+            let mut cfg = cfg.assume_init();
+
+            cfg.source_width = 64;
+            cfg.source_height = 64;
+
+            let ret = svt_av1_enc_set_parameter(handle, &mut cfg);
+            assert_eq!(ret, 0);
+
+            let ret = svt_av1_enc_init(handle);
+            assert_eq!(ret, 0);
+        }
     }
 }

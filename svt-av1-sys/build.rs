@@ -14,12 +14,12 @@ fn format_write(builder: bindgen::Builder) -> String {
 
 fn main() {
     let libs = system_deps::Config::new().probe().unwrap();
-    let headers = libs.get("SvtAv1Enc").unwrap().include_paths.clone();
+    let headers = libs.get_by_name("SvtAv1Enc").unwrap().include_paths.clone();
 
     let mut builder = bindgen::builder()
-        .header("data/enc.h")
-        .blacklist_type("max_align_t")
-        .whitelist_function("svt_av1_enc.*")
+        .header("data/wrapper.h")
+        .blocklist_type("max_align_t")
+        .allowlist_function("svt_av1.*")
         .size_t_is_usize(true)
         .default_enum_style(bindgen::EnumVariation::ModuleConsts);
 
@@ -32,7 +32,7 @@ fn main() {
 
     let out_path = PathBuf::from(env::var("OUT_DIR").unwrap());
 
-    let mut file = File::create(out_path.join("enc.rs")).unwrap();
+    let mut file = File::create(out_path.join("svtav1.rs")).unwrap();
 
     let _ = file.write(s.as_bytes());
 }

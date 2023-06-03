@@ -15,4 +15,4 @@ By default the bindings are generated using the headers and libraries that ought
 - [ ] Examples
 
 [1]: https://github.com/rust-lang/rust-bindgen
-[2]: https://github.com/OpenVisualCloud/SVT-AV1
+[2]: https://gitlab.com/AOMediaCodec/SVT-AV1/-/releases

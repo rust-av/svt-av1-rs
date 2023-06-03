@@ -6,11 +6,11 @@
 #[cfg_attr(feature = "cargo-clippy", allow(const_static_lifetime))]
 #[cfg_attr(feature = "cargo-clippy", allow(unreadable_literal))]
 
-pub mod SvtAV1 {
+pub mod SvtAV1Sys {
     include!(concat!(env!("OUT_DIR"), "/svtav1.rs"));
 }
 
-pub use SvtAV1::*;
+pub use SvtAV1Sys::*;
 
 #[cfg(test)]
 mod tests {
@@ -24,7 +24,7 @@ mod tests {
             let mut cfg = mem::MaybeUninit::zeroed();
 
             let ret = svt_av1_enc_init_handle(&mut handle, ptr::null_mut(), cfg.as_mut_ptr());
-            assert_eq!(ret, 0);
+            assert_eq!(ret, EbErrorType::EB_ErrorNone);
 
             let mut cfg = cfg.assume_init();
 
@@ -32,10 +32,10 @@ mod tests {
             cfg.source_height = 64;
 
             let ret = svt_av1_enc_set_parameter(handle, &mut cfg);
-            assert_eq!(ret, 0);
+            assert_eq!(ret, EbErrorType::EB_ErrorNone);
 
             let ret = svt_av1_enc_init(handle);
-            assert_eq!(ret, 0);
+            assert_eq!(ret, EbErrorType::EB_ErrorNone);
         }
     }
 }

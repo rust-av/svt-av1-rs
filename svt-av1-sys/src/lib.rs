@@ -6,11 +6,11 @@
 #[cfg_attr(feature = "cargo-clippy", allow(const_static_lifetime))]
 #[cfg_attr(feature = "cargo-clippy", allow(unreadable_literal))]
 
-pub mod enc {
-    include!(concat!(env!("OUT_DIR"), "/enc.rs"));
+pub mod SvtAV1 {
+    include!(concat!(env!("OUT_DIR"), "/svtav1.rs"));
 }
 
-pub use enc::*;
+pub use SvtAV1::*;
 
 #[cfg(test)]
 mod tests {
